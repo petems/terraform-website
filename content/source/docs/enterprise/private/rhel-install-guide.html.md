@@ -15,6 +15,7 @@ This install guide is specifically for users of Private Terraform Enterprise ins
    * For Docker EE, there are explicit RHEL instructions to follow: https://docs.docker.com/install/linux/docker-ee/rhel/ 
    * For Docker from RHEL extras, the following should enable the RHEL extras repository:
       * `yum-config-manager --enable rhel-7-server-extras-rpms` or on AWS `yum-config-manager --enable rhui-REGION-rhel-server-extras`
+* RHEL images in Azure Cloud must be resized above the 30GB default after initial boot with `fdisk`, as documented in the Azure knowledge base article [How to: Resize Linux osDisk partition on Azure](https://blogs.msdn.microsoft.com/linuxonazure/2017/04/03/how-to-resize-linux-osdisk-partition-on-azure/).
 * A properly configured docker storage backend, either:
    * Devicemapper configured for production usage, according to the Docker documentation: https://docs.docker.com/storage/storagedriver/device-mapper-driver/#configure-direct-lvm-mode-for-production. This configuration requires a second block device available to the system to be used as a thin-pool for Docker. You may need to configure this block device before the host system is booted, depending on the hosting platform.
    * A system capable of using overlay2. The requires at least kernel version 3.10.0-693 and, if XFS is being used, the flag ftype=1. The full documentation on this configuration is at: https://docs.docker.com/storage/storagedriver/overlayfs-driver/

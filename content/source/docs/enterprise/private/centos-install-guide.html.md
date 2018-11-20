@@ -16,6 +16,7 @@ This install guide is specifically for users of Private Terraform Enterprise ins
    * [Docker CE](https://docs.docker.com/install/linux/docker-ce/centos/) version 17.06 or later.
    * [Docker EE](https://docs.docker.com/install/linux/docker-ee/centos/) version 17.06 or later. 
    * Or you can allow the installer to install Docker for you.
+* CentOS images in Azure Cloud must be resized above the 30GB default after initial boot with `fdisk`, as documented in the Azure knowledge base article [How to: Resize Linux osDisk partition on Azure](https://blogs.msdn.microsoft.com/linuxonazure/2017/04/03/how-to-resize-linux-osdisk-partition-on-azure/).
 * A properly configured docker storage backend, either:
    * Devicemapper configured for production usage, in accordance with the [Docker documentation](https://docs.docker.com/storage/storagedriver/device-mapper-driver/#configure-direct-lvm-mode-for-production). This configuration requires a second block device available to the system to be used as a thin-pool for Docker. You may need to configure this block device before the host system is booted, depending on the hosting platform.
    * A system capable of using overlay2. The requires at least kernel version 3.10.0-693 and, if XFS is being used, the flag `ftype=1`. The full documentation on this configuration is on the [Docker site](https://docs.docker.com/storage/storagedriver/overlayfs-driver/).
